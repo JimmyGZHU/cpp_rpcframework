@@ -1,0 +1,50 @@
+syntax = "proto3";      //protobuf版本
+
+package mprpc;          //代码包(在c++中为namespace)
+
+// 表示生成service服务类和rpc方法描述
+option cc_generic_services = true;
+
+// 定义错误消息类型
+message ResultCode {
+    int32 errcode = 1;
+    bytes errmsg = 2;
+}
+
+// 定义请求消息类型
+message LoginRequest {
+    bytes name = 1;    
+    bytes pwd = 2;
+}
+
+// 定义登录响应消息类型
+message LoginResponse {
+    ResultCode res = 1;
+    bool success = 2;
+}
+
+message User {
+    bytes name = 1;
+    uint32 age = 2;
+    enum Sex {
+        MAN = 0;
+        WOMAN = 1;
+    }
+    Sex sex = 3;
+}
+
+message GetFriendListRequest {
+    uint32 userid = 1;
+}
+
+message GetFriendListResponse {
+    ResultCode res = 1;
+    repeated User friend_list = 2;
+}
+
+//在protobuf里面定义描述rpc方法的类型
+service UserServiceRpc {
+    rpc Login(LoginRequest) returns(LoginResponse);
+    rpc GetFriendList(GetFriendListRequest) returns(GetFriendListResponse);
+}
+

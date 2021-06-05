@@ -1,0 +1,8 @@
+18:22:40 =>[info] service_name: UserServiceRpc
+18:22:40 =>[info] method_name: Login
+18:22:40 =>[info] method_name: Register
+18:22:40 =>[info] zookeeper_init success!
+18:22:40 =>[info] znode create successfully!
+18:22:40 =>[info] znode create successfully!
+18:22:40 =>[info] znode create successfully!
+18:22:40 =>[info] RpcProvider start! ip:127.0.0.1  port:8000
